@@ -1,1 +1,0 @@
-{"seeds": [42, 43, 44, 45, 46], "epochs": 200, "learning_rate": 5e-05, "weight_decay": 1e-05, "patience": 10, "init": "kaiming", "dataset": "XXZ", "label_param": "Jz", "normalize_labels": true, "kernels": null, "seed": 42, "logdir": "logs/XXZ/seed_42_1", "goodness_str": "r2", "phase_indicator_str": "${\\partial\\hat{\\gamma}}/{\\partial\\gamma}$"}
