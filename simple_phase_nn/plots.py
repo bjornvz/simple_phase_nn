@@ -89,26 +89,15 @@ def plot_history(metrics, cf, file_name):
 
     # subplot 1: all the losses
     ax1 = fig.add_subplot(gs[0, 0])
-    ax1.plot(metrics[metric1], label=metric1, color="red")
-    ax1.plot(metrics[metric3], label=metric3, color="blue")
+    ax1.plot(metrics[metric1], label='train', color="red")
+    ax1.plot(metrics[metric3], label='val', color="blue")
+    ax1.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
     ax1.set_yscale("log")
     ax1.set_xlabel("epoch")
     ax1.set_ylabel("loss")
     ax1.set_title(fr"$\mathbf{{loss}}$, train= {metrics[metric1][-1]:.2e}, val={metrics[metric3][-1]:.2e}", loc='left')
 
-    if cf.kernels is not None:
-        # subplot 2: l1
-        ax2 = fig.add_subplot(gs[0, 1])
-        ax2.plot(metrics[metric2], label='train', color="red")
-        ax2.plot(metrics[metric4], label='val', color="blue")
-        ax2.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
-        ax2.set_yscale("log")
-        ax2.set_xlabel("epoch")
-        ax2.set_ylabel("l1")
-        ax2.set_title(
-            fr"$\mathbf{{l1}}$, train= {metrics[metric2][-1]:.2e}, val={metrics[metric4][-1]:.2e}",
-            loc='left'
-        )
+
     # subplot 3: acc/r2
     ax3 = fig.add_subplot(gs[1, 0])
     ax3.plot(metrics[f"val_"+metric5], label=metric5, color="blue")
@@ -119,18 +108,6 @@ def plot_history(metrics, cf, file_name):
     lower_limit = 0 
     ax3.set_ylim(lower_limit, 1.01)
 
-    if cf.kernels is not None:
-        # subplot 4: the bottleneck
-        ax4 = fig.add_subplot(gs[1, 1])
-        for i in range(len(cf.kernels)):
-            ax4.plot(z[i], label=kernel_to_pattern(cf.kernels[i]))
-        legend = ax4.legend(bbox_to_anchor=(1.05, 1), loc='upper left', ncol=2, fontsize=8)
-        for text, line in zip(legend.get_texts(), legend.get_lines()):
-            text.set_color(line.get_color())
-        ax4.set_xlabel("epoch")
-        ax4.set_ylabel("abs(z)")
-        ax4.set_title("bottleneck activations")
-        ax4.set_yscale("log")
 
     phase_indicator = np.array(metrics["phase_indicator"])
     unique_labels = np.array(metrics["unique_labels"])

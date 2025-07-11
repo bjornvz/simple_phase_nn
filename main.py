@@ -12,7 +12,7 @@ if __name__ == "__main__":
     cf.seeds = [42, 43, 44, 45, 46]  # List of seeds for reproducibility
 
     # TRAINING
-    cf.epochs = 20
+    cf.epochs = 10
     cf.learning_rate = 1e-4
     cf.weight_decay = 1e-5        # L2 regularization on weights
     cf.patience = 10              # early stopping patience, in epochs
