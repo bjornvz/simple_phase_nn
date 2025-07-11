@@ -1,0 +1,21 @@
+name: tetriscnn
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - scikit-learn
+  - pytorch
+  - torchvision
+  - pip
+  - tqdm
+  - pip:
+      - torchmetrics
+      - seaborn
+      - torcheval
+
+  
