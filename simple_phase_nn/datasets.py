@@ -41,7 +41,7 @@ class XXZDataset(PhaseDataset):
         self.normalize = normalize
 
         grid_size = (300,) 
-        directory = './data/simulated/XXZ/'
+        directory = './data/simulated/XXZ_L/'
         file_list = [os.path.join(directory, f) for f in os.listdir(directory)]
 
         # Loads files that start with 't=' and end with '.dat' in the specified directory
